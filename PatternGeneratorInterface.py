@@ -9,7 +9,7 @@ import math
 cellSize = 100
 # pattern
 pattern = """
-bd
+b
 """
 # Extra folder/ files
 
