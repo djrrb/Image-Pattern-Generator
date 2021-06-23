@@ -19,9 +19,9 @@ import math
 # 1. PATTERNS
 #------------------------------------------------------------ 
 # determine a base cell size
-cellSize = 100
-# pattern
-pattern = """
+defaultCellSize = 100
+# if nothing is in the UI, the pattern will be this
+defaultPattern = """
 b
 """
 # Extra folder/ files
@@ -40,7 +40,17 @@ typefaceList = [
 
 Variable([
     dict(name="basePattern", ui="PopUpButton", args=dict(items=['image', 'text'])),
-    dict(name="pattern", ui="EditText", args=dict(text='b')),
+    dict(name="pattern", ui="EditText", args=dict(text=defaultPattern.strip())),
+    dict(name="cellSize", ui="Slider",
+            args=dict(
+                # some vanilla specific
+                # setting for a slider
+                value=defaultCellSize,
+                minValue=50,
+                maxValue=500,
+                tickMarkCount=10, 
+                #stopOnTickMarks=True
+                )),
     dict(name="Typeface", ui="PopUpButton", args=dict(items=typefaceList)),
     dict(name="totalXSymmetry", ui="CheckBox"),
     dict(name="totalYSymmetry", ui="CheckBox"),  
@@ -53,7 +63,6 @@ Variable([
     dict(name="saveFile", ui="CheckBox")
     ], globals())
 
-
 #------------------------------------------------------------
 # 3. ELEMENTS/ DRAW PATTERN
 #------------------------------------------------------------
@@ -64,7 +73,15 @@ rect(0, 0, width(), height())
 # Type color
 fill(typeColor)
 
+# if the pattern field is empty, avoid an error
+if not pattern:
+    pattern = defaultPattern
 
+# round cell size to the nearest integer
+if cellSize:
+    cellSize = int(round(cellSize))
+else:
+    cellSize = 100
 
 
 if basePattern == 1:
@@ -141,7 +158,10 @@ def drawPattern(lines):
                         font(theFontName, theFontSize)
                         text(char, (0, 0))
                     else:
-                        image(images[char], (0, 0))
+                        imageWidth, imageHeight = imageSize(images[char])
+                        with savedState():
+                            scale(cellSize/imageWidth)
+                            image(images[char], (0, 0))
                     if showGrid:
                         with savedState():
                             stroke(1, 0, 1)
