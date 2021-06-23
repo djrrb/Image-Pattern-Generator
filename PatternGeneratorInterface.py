@@ -105,12 +105,16 @@ images = {
     'p': 'images/p.png',
     'd': 'images/d.png',
     'b': 'images/b.png',
-    'q': 'images/q.png'
+    'q': 'images/q.png',
+    'a': 'images/a.png',
+    'c': 'images/c.png',
+    'e': 'images/e.png',
+    'f': 'images/f.png'
     }
     
 # define symmetry
-xSymmetryMap = {'p': 'q', 'b': 'd', 'P': 'Q', 'B': 'D', 'A': 'H', 'a': 'h', 'U': 'V', 'u': 'v'}
-ySymmetryMap = {'p': 'b', 'q': 'd', 'P': 'B', 'Q': 'D', 'M': 'W', 'm': 'w'}
+xSymmetryMap = {'p': 'q', 'b': 'd', 'P': 'Q', 'B': 'D', 'A': 'H', 'a': 'h', 'U': 'V', 'u': 'v', 'a' : 'e', 'c' : 'f'}
+ySymmetryMap = {'p': 'b', 'q': 'd', 'P': 'B', 'Q': 'D', 'M': 'W', 'm': 'w', 'a' : 'f', 'e' : 'c'}
 # add inverse to symmetry
 xSymmetryMap.update({v: k for k, v in xSymmetryMap.items()})
 ySymmetryMap.update({v: k for k, v in ySymmetryMap.items()})
