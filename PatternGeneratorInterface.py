@@ -1,6 +1,19 @@
 import os
 import math
 
+#------------------------------------------------------------
+# 0. INTRO
+#------------------------------------------------------------ 
+
+# Pattern Generator
+# This script is meant to be run in drawbot
+# https://www.drawbot.com
+#
+# This tool was created to be used during 
+# 'Designing Type Ornaments' workshop at Typographics 2021
+# It is a collaborative work by DJR and Marina Chaccur
+#
+# Fot the 'text' the MyLeaves fonts should be installed. 
 
 #------------------------------------------------------------
 # 1. PATTERNS
@@ -26,7 +39,7 @@ typefaceList = [
 
 
 Variable([
-    dict(name="basePattern", ui="PopUpButton", args=dict(items=['text','image'])),
+    dict(name="basePattern", ui="PopUpButton", args=dict(items=['image', 'text'])),
     dict(name="pattern", ui="EditText", args=dict(text='b')),
     dict(name="Typeface", ui="PopUpButton", args=dict(items=typefaceList)),
     dict(name="totalXSymmetry", ui="CheckBox"),
@@ -55,9 +68,9 @@ fill(typeColor)
 
 
 if basePattern == 1:
-    useText = False
-else:
     useText = True
+else:
+    useText = False
 
 theFontName = typefaceList[Typeface]
 theFontSize = cellSize*2.5
@@ -79,8 +92,8 @@ images = {
     }
     
 # define symmetry
-xSymmetryMap = {'p': 'q', 'b': 'd'}
-ySymmetryMap = {'p': 'b', 'q': 'd'}
+xSymmetryMap = {'p': 'q', 'b': 'd', 'P': 'Q', 'B': 'D', 'A': 'H', 'a': 'h', 'U': 'V', 'u': 'v'}
+ySymmetryMap = {'p': 'b', 'q': 'd', 'P': 'B', 'Q': 'D', 'M': 'W', 'm': 'w'}
 # add inverse to symmetry
 xSymmetryMap.update({v: k for k, v in xSymmetryMap.items()})
 ySymmetryMap.update({v: k for k, v in ySymmetryMap.items()})
