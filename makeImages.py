@@ -4,8 +4,8 @@ im = ImageObject('custom-images/Amz1.png')
 # im = ImageObject()
 # with im:
 #     size(cellSize, cellSize)
-#     font('myleaves curvepoint', cellSize*2.5)
-#     text('b', (0, 0))
+#     font('GraphicTwo-Regular', cellSize*2.05)
+#     text('m', (0, 0))
 images['b'] = im
 
 # derive d, p, q from b
@@ -70,6 +70,7 @@ images['f'] = f
 for char in images:
     newDrawing()
     newPage(cellSize, cellSize)
+    # translate (0, 100)
     image(images[char], (0, 0))
     saveImage(f'images/{char}.png')
     
