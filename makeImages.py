@@ -1,7 +1,7 @@
 cellSize = 250
 images = {}
-im = ImageObject('custom-images/Amz1.png')
-# im = ImageObject()
+im = ImageObject('custom-images/Amz11.png')
+im = ImageObject()
 # with im:
 #     size(cellSize, cellSize)
 #     font('GraphicTwo-Regular', cellSize*2.05)
